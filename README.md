@@ -15,3 +15,5 @@ contains a shell script with commands that are executed when Jenkins processes
 the "Deliver" stage of your Pipeline.
 
 Declenchement automatique par scrutation (Poll SCM) - examen DevOps
+
+Declenchement automatique par scrutation (Poll SCM) - examen DevOps
