@@ -18,5 +18,14 @@ node {
         stage('Execution') {
             sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
         }
+        stage('Image') {
+            sh "docker build -t minain/bibliotheque:${env.BUILD_NUMBER} ."
+        }
+        stage('Push') {
+            withCredentials([string(credentialsId: 'docker_hub_pwd', variable: 'DOCKER_PWD')]) {
+                sh 'echo "$DOCKER_PWD" | docker login -u minain --password-stdin'
+            }
+            sh "docker push minain/bibliotheque:${env.BUILD_NUMBER}"
+        }
     }
 }
